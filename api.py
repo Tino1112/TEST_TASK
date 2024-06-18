@@ -25,8 +25,7 @@ def send_data(date, hour, minute, name, surname, sex):
         try:
             return response.json()
         except ValueError:
-            # Print the response text to debug the issue
-            print("Response content is not valid JSON:", response.text)
+            print("Response content is not valid JSON:", response.text) # Debugging
             return {"error": "Invalid JSON response"}
     else:
         # Handle the case where the response body is empty
