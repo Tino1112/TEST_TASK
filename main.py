@@ -1,3 +1,4 @@
+#Import required modules
 from kivy.lang import Builder
 from kivymd.app import MDApp
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -10,6 +11,7 @@ from kivy.metrics import dp
 from api import send_data
 import datetime
 
+# UI
 KV = '''
 MDBoxLayout:
     orientation: 'vertical'
@@ -114,6 +116,7 @@ MDBoxLayout:
 '''
 
 
+# Function to validate date format
 def check_date_format(date_string, date_format="%Y-%m-%d"):
     try:
         datetime.datetime.strptime(date_string, date_format)
@@ -158,6 +161,7 @@ class MainApp(MDApp):
             except Exception as e:
                 self.show_dialog("Error", f"Failed to send data: {str(e)}")
 
+    # Function to validate inputs
     def validate_input(self, date, hour, minute, name, sex):
         if not check_date_format(date):
             self.show_dialog("Error", "Invalid date format. Please use YYYY-MM-DD.")
